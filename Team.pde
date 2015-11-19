@@ -15,6 +15,9 @@ class Team {
   String bestFinish;
   String continent;
   Flag flag;
+  int flagX;
+  int flagY;
+  
   
   //Constructor
 
@@ -33,7 +36,7 @@ class Team {
     pointsPerGame=parseFloat(data.get(11));
     bestFinish=data.get(12);
     continent=data.get(13);
-    String imgPath="flag-of-" + teamName+".png";
+    String imgPath="flag-of-" + teamName + ".png";
     setFlag(imgPath);
   }
 
@@ -50,6 +53,8 @@ class Team {
   
   void drawFlag(int x, int y){
     image(flag.getImage(),x,y);
+    flagX=x;
+    flagY=y;
   }
   
 
@@ -101,10 +106,21 @@ class Team {
     return continent;
   }
   
+  int getFlagX(){
+    int xloc=flagX;
+    return xloc;
+  }
+   int getFlagY(){
+    int yloc=flagY;
+    return yloc;
+  }
+  
   String getAllDetails(){
    String details=rank +" "+teamName+" "+apps+" "+bestFinish;
      return details;             
   }
+  
+  
   
 }
 
