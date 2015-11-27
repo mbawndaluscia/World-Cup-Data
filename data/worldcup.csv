@@ -1,77 +1,77 @@
-1,Brazil,20,104,70,17,17,221,102,119,227,2.18,Winner,South America
-2,Germany,18,106,66,20,20,224,121,103,218,2.06,Winner,Europe
-3,Italy,18,83,45,21,17,128,77,51,156,1.88,Winner,Europe
-4,Argentina,16,77,42,14,21,131,84,47,140,1.82,Winner,South America
-5,Spain,14,59,29,12,18,92,66,26,99,1.68,Winner,Europe
-6,England,14,62,26,20,16,79,56,23,98,1.58,Winner,Europe
-7,France,14,59,28,12,19,106,71,35,96,1.63,Winner,Europe
-8,Netherlands,10,50,27,12,11,86,48,38,93,1.86,Runner-up,Europe
-9,Uruguay,12,51,20,12,19,80,71,9,72,1.41,Winner,South America
-10,Sweden,11,46,16,13,17,74,69,5,61,1.33,Runner-up,Europe
-11,Russia,10,40,17,8,15,66,47,19,59,1.48,Fourth place,Europe
-12,Serbia,11,43,17,8,18,64,59,5,59,1.37,Fourth place,Europe
-13,Mexico,15,53,14,14,25,57,92,-35,56,1.06,Quarter-finals,Central/North America
-14,Belgium,12,41,14,9,18,52,66,-14,51,1.24,Fourth place,Europe
-15,Poland,7,31,15,5,11,44,40,4,50,1.61,Third place,Europe
-16,Hungary,9,32,15,3,14,87,57,30,48,1.5,Runner-up,Europe
-17,Portugal,6,26,13,4,9,43,29,14,43,1.65,Third place,Europe
-18,Czech Republic,9,33,12,5,16,47,49,-2,41,1.24,Runner-up,Europe
-19,Austria,7,29,12,4,13,43,47,-4,40,1.38,Third place,Europe
-20,Chile,9,33,11,7,15,40,49,-9,40,1.21,Third place,South America
-21,Switzerland,10,33,11,6,16,45,59,-14,39,1.18,Quarter-finals,Europe
-22,Paraguay,8,27,7,10,10,30,38,-8,31,1.15,Quarter-finals,South America
-23,United States,10,33,8,6,19,37,62,-25,30,0.91,Third place,Central/North America
-24,Romania,7,21,8,5,8,30,32,-2,29,1.38,Quarter-finals,Europe
-25,Denmark,4,16,8,2,6,27,24,3,26,1.63,Quarter-finals,Europe
-26,South Korea,9,31,5,9,17,31,67,-36,24,0.77,Fourth place,Asia
-27,Croatia,4,16,7,2,7,21,17,4,23,1.44,Third place,Europe
-28,Colombia,5,18,7,2,9,26,27,-1,23,1.28,Quarter-finals,South America
-29,Costa Rica,4,15,5,4,6,17,23,-6,19,1.27,Quarter-finals,Central/North America
-30,Scotland,8,23,4,7,12,25,41,-16,19,0.83,First round,Europe
-31,Cameroon,7,23,4,7,12,18,43,-25,19,0.83,Quarter-finals,Africa
-32,Nigeria,5,18,5,3,10,20,26,-6,18,1,Second round,Africa
-33,Bulgaria,7,26,3,8,15,22,53,-31,17,0.65,Fourth place,Europe
-34,Turkey,2,10,5,1,4,20,17,3,16,1.6,Third place,Europe
-35,Japan,5,17,4,4,9,14,22,-8,16,0.94,Second round,Asia
-36,Ghana,3,12,4,3,5,13,16,-3,15,1.25,Quarter-finals,Africa
-37,Peru,4,15,4,3,8,19,31,-12,15,1,Quarter-finals,South America
-39,Ireland,3,13,3,5,5,13,23,-10,14,1.08,Quarter-finals,Europe
-38,Northern Ireland,3,13,2,8,3,10,10,0,14,1.08,Quarter-finals,Europe
-40,Ecuador,3,10,4,1,5,10,11,-1,13,1.3,Second round,South America
-41,Algeria,4,13,3,3,7,13,19,-6,12,0.92,Second round,Africa
-42,Cote d'Ivoire,3,9,3,1,5,13,14,-1,10,1.11,First round,Africa
-43,South Africa,3,9,2,4,3,11,16,-5,10,1.11,First round,Africa
-44,Morocco,4,13,2,4,7,12,18,-6,10,0.77,Second round,Africa
-45,Norway,3,8,2,3,3,7,8,-1,9,1.13,Second round,Europe
-46,Australia,4,13,2,3,8,11,26,-15,9,0.69,Second round,Asia
-47,Senegal,1,5,2,2,1,7,6,1,8,1.6,Quarter-finals,Africa
-48,East Germany,1,6,2,2,2,5,5,0,8,1.33,Quarter-finals,Europe
-49,Greece,3,10,2,2,6,5,20,-15,8,0.8,Second round,Europe
-50,Saudi Arabia,4,13,2,2,9,9,32,-23,8,0.62,Second round,Asia
-51,Ukraine,1,5,2,1,2,5,7,-2,7,1.4,Quarter-finals,Europe
-52,Tunisia,4,12,1,4,7,8,17,-9,7,0.58,First round,Africa
-53,Wales,1,5,1,3,1,4,4,0,6,1.2,Quarter-finals,Europe
-54,Iran,4,12,1,3,8,7,22,-15,6,0.5,First round,Asia
-55,Slovakia,1,3,1,1,1,5,12,-7,4,1.33,Quarter-finals,Europe
-56,Slovenia,1,4,1,1,2,5,7,-2,4,1,Second round,Europe
-57,Cuba,2,6,1,1,4,5,10,-5,4,0.67,First round,Central/North America
-58,North Korea,2,7,1,1,5,6,21,-15,4,0.57,Quarter-finals,Asia
-59,Bosnia and Herzegovina,1,3,1,0,2,4,4,0,3,1,First round,Europe
-60,Honduras,1,3,1,0,2,3,9,-6,3,1,First round,Central/North America
-61,Jamaica,2,6,0,3,3,4,14,-10,3,0.5,First round,Central/North America
-62,New Zealand,3,9,0,3,6,3,14,-11,3,0.33,First round,Oceania
-63,Angola,1,3,0,2,1,1,2,-1,2,0.67,First round,Africa
-64,Israel,1,3,0,2,1,1,3,-2,2,0.67,First round,Europe
-65,Egypt,2,4,0,2,2,3,6,-3,2,0.5,First round,Africa
-66,Kuwait,1,3,0,1,2,2,6,-4,1,0.33,First round,Asia
-67,Trinidad and Tobago,1,3,0,1,2,0,4,-4,1,0.33,First round,Central/North America
-68,Bolivia,3,6,0,1,5,1,20,-19,1,0.17,First round,South America
-69,Iraq,1,3,0,0,3,1,4,-3,0,0,First round,Asia
-70,Togo,1,3,0,0,3,1,6,-5,0,0,First round,Africa
-71,Canada,1,3,0,0,3,0,5,-5,0,0,First round,Central/North America
-72,Indonesia,1,1,0,0,1,0,6,-6,0,0,First round,Asia
-73,United Arab Emirates,1,3,0,0,3,2,11,-9,0,0,First round,Asia
-74,China,1,3,0,0,3,0,9,-9,0,0,First round,Asia
-75,Haiti,1,3,0,0,3,2,14,-12,0,0,First round,Central/North America
-76,DR Congo,1,3,0,0,3,0,14,-14,0,0,First round,Africa
-77,El Salvador,2,6,0,0,6,1,22,-21,0,0,First round,Central/North America
+1,Brazil,20,104,70,17,17,221,102,119,227,2.18,Winner,South America,FFFFFF00,FF0066CC
+2,Germany,18,106,66,20,20,224,121,103,218,2.06,Winner,Europe,FFFFFFFF,FF000000
+3,Italy,18,83,45,21,17,128,77,51,156,1.88,Winner,Europe,FF0066CC,FFFFFFFF
+4,Argentina,16,77,42,14,21,131,84,47,140,1.82,Winner,South America,FF3399FF,FFFFFFFF
+5,Spain,14,59,29,12,18,92,66,26,99,1.68,Winner,Europe,FFFF0A0A,FFFFFF00
+6,England,14,62,26,20,16,79,56,23,98,1.58,Winner,Europe,FFFFFFFF,FFFF0A0A
+7,France,14,59,28,12,19,106,71,35,96,1.63,Winner,Europe,FF0066CC,FFFF0A0A
+8,Netherlands,10,50,27,12,11,86,48,38,93,1.86,Runner-up,Europe,FFFF8C00,FFFFFFFF
+9,Uruguay,12,51,20,12,19,80,71,9,72,1.41,Winner,South America,FF3399FF,FFFFFFFF
+10,Sweden,11,46,16,13,17,74,69,5,61,1.33,Runner-up,Europe,FFFFFF00,FF0066CC
+11,Russia,10,40,17,8,15,66,47,19,59,1.48,Fourth place,Europe,FFFF0A0A,FF0066CC
+12,Serbia,11,43,17,8,18,64,59,5,59,1.37,Fourth place,Europe,FFFF0A0A,FF0066CC
+13,Mexico,15,53,14,14,25,57,92,-35,56,1.06,Quarter-finals,Central/North America,FF33CC00,FFFF0A0A
+14,Belgium,12,41,14,9,18,52,66,-14,51,1.24,Fourth place,Europe,FFFF0A0A,FF000000
+15,Poland,7,31,15,5,11,44,40,4,50,1.61,Third place,Europe,FFFF0A0A,FFFFFFFF
+16,Hungary,9,32,15,3,14,87,57,30,48,1.5,Runner-up,Europe,FFFF0A0A,FFFFFFFF
+17,Portugal,6,26,13,4,9,43,29,14,43,1.65,Third place,Europe,FFFF0A0A,FF33CC00
+18,Czech Republic,9,33,12,5,16,47,49,-2,41,1.24,Runner-up,Europe,FFFF0A0A,FF0066CC
+19,Austria,7,29,12,4,13,43,47,-4,40,1.38,Third place,Europe,FFFF0A0A,FFFFFFFF
+20,Chile,9,33,11,7,15,40,49,-9,40,1.21,Third place,South America,FFFF0A0A,FFFFFFFF
+21,Switzerland,10,33,11,6,16,45,59,-14,39,1.18,Quarter-finals,Europe,FFFF0A0A,FFFFFFFF
+22,Paraguay,8,27,7,10,10,30,38,-8,31,1.15,Quarter-finals,South America,FFFF0A0A,FFFFFFFF
+23,United States,10,33,8,6,19,37,62,-25,30,0.91,Third place,Central/North America,FFFFFFFF,FFFF0A0A
+24,Romania,7,21,8,5,8,30,32,-2,29,1.38,Quarter-finals,Europe,FFFFFF00,FFFF0A0A
+25,Denmark,4,16,8,2,6,27,24,3,26,1.63,Quarter-finals,Europe,FFFF0A0A,FFFFFFFF
+26,South Korea,9,31,5,9,17,31,67,-36,24,0.77,Fourth place,Asia,FFFFFFFF,FFFF0A0A
+27,Croatia,4,16,7,2,7,21,17,4,23,1.44,Third place,Europe,FFFF0A0A,FFFFFFFF
+28,Colombia,5,18,7,2,9,26,27,-1,23,1.28,Quarter-finals,South America,FFFFFF00,FFFF0A0A
+29,Costa Rica,4,15,5,4,6,17,23,-6,19,1.27,Quarter-finals,Central/North America,FF0066CC,FFFFFFFF
+30,Scotland,8,23,4,7,12,25,41,-16,19,0.83,First round,Europe,FF0066CC,FFFFFFFF
+31,Cameroon,7,23,4,7,12,18,43,-25,19,0.83,Quarter-finals,Africa,FF33CC00,FFFF0A0A
+32,Nigeria,5,18,5,3,10,20,26,-6,18,1,Second round,Africa,FF33CC00,FFFFFFFF
+33,Bulgaria,7,26,3,8,15,22,53,-31,17,0.65,Fourth place,Europe,FF33CC00,FFFF0A0A
+34,Turkey,2,10,5,1,4,20,17,3,16,1.6,Third place,Europe,FFFF0A0A,FFFFFFFF
+35,Japan,5,17,4,4,9,14,22,-8,16,0.94,Second round,Asia,FFFFFFFF,FFFF0A0A
+36,Ghana,3,12,4,3,5,13,16,-3,15,1.25,Quarter-finals,Africa,FFFFFFFF,FFFF0A0A
+37,Peru,4,15,4,3,8,19,31,-12,15,1,Quarter-finals,South America,FFFF0A0A,FFFFFFFF
+39,Ireland,3,13,3,5,5,13,23,-10,14,1.08,Quarter-finals,Europe,FF33CC00,FFFFFFFF
+38,Northern Ireland,3,13,2,8,3,10,10,0,14,1.08,Quarter-finals,Europe,FFFFFFFF,FF33CC00
+40,Ecuador,3,10,4,1,5,10,11,-1,13,1.3,Second round,South America,FFFFFF00,FF0066CC
+41,Algeria,4,13,3,3,7,13,19,-6,12,0.92,Second round,Africa,FFFFFFFF,FF33CC00
+42,Cote d'Ivoire,3,9,3,1,5,13,14,-1,10,1.11,First round,Africa,FFFF8C00,FF33CC00
+43,South Africa,3,9,2,4,3,11,16,-5,10,1.11,First round,Africa,FF33CC00,FFFFFF00
+44,Morocco,4,13,2,4,7,12,18,-6,10,0.77,Second round,Africa,FFFF0A0A,FFFFFFFF
+45,Norway,3,8,2,3,3,7,8,-1,9,1.13,Second round,Europe,FFFF0A0A,FFFFFFFF
+46,Australia,4,13,2,3,8,11,26,-15,9,0.69,Second round,Asia,FFFFFF00,FF33CC00
+47,Senegal,1,5,2,2,1,7,6,1,8,1.6,Quarter-finals,Africa,FFFFFF00,FFFF0A0A
+48,East Germany,1,6,2,2,2,5,5,0,8,1.33,Quarter-finals,Europe,FFFFFFFF,FFFF0A0A
+49,Greece,3,10,2,2,6,5,20,-15,8,0.8,Second round,Europe,FF0066CC,FFFFFFFF
+50,Saudi Arabia,4,13,2,2,9,9,32,-23,8,0.62,Second round,Asia,FF33CC00,FFFFFFFF
+51,Ukraine,1,5,2,1,2,5,7,-2,7,1.4,Quarter-finals,Europe,FF0066CC,FFFFFF00
+52,Tunisia,4,12,1,4,7,8,17,-9,7,0.58,First round,Africa,FFFF0A0A,FFFFFFFF
+53,Wales,1,5,1,3,1,4,4,0,6,1.2,Quarter-finals,Europe,FFFF0A0A,FFFFFFFF
+54,Iran,4,12,1,3,8,7,22,-15,6,0.5,First round,Asia,FFFF0A0A,FFFFFFFF
+55,Slovakia,1,3,1,1,1,5,12,-7,4,1.33,Quarter-finals,Europe,FF0066CC,FFFFFFFF
+56,Slovenia,1,4,1,1,2,5,7,-2,4,1,Second round,Europe,FF0066CC,FFFFFFFF
+57,Cuba,2,6,1,1,4,5,10,-5,4,0.67,First round,Central/North America,FFFF0A0A,FF0066CC
+58,North Korea,2,7,1,1,5,6,21,-15,4,0.57,Quarter-finals,Asia,FFFF0A0A,FFFFFFFF
+59,Bosnia and Herzegovina,1,3,1,0,2,4,4,0,3,1,First round,Europe,FF0066CC,FFFFFF00
+60,Honduras,1,3,1,0,2,3,9,-6,3,1,First round,Central/North America,FF0066CC,FFFFFFFF
+61,Jamaica,2,6,0,3,3,4,14,-10,3,0.5,First round,Central/North America,FF33CC00,FFFFFF00
+62,New Zealand,3,9,0,3,6,3,14,-11,3,0.33,First round,Oceania,FFFFFFFF,FF000000
+63,Angola,1,3,0,2,1,1,2,-1,2,0.67,First round,Africa,FFFF0A0A,FF000000
+64,Israel,1,3,0,2,1,1,3,-2,2,0.67,First round,Europe,FF0066CC,FFFFFFFF
+65,Egypt,2,4,0,2,2,3,6,-3,2,0.5,First round,Africa,FFFF0A0A,FFFFFFFF
+66,Kuwait,1,3,0,1,2,2,6,-4,1,0.33,First round,Asia,FF000000,FFFF0A0A
+67,Trinidad and Tobago,1,3,0,1,2,0,4,-4,1,0.33,First round,Central/North America,FFFF0A0A,FF000000
+68,Bolivia,3,6,0,1,5,1,20,-19,1,0.17,First round,South America,FF33CC00,FFFFFF00
+69,Iraq,1,3,0,0,3,1,4,-3,0,0,First round,Asia,FFFF0A0A,FFFFFFFF
+70,Togo,1,3,0,0,3,1,6,-5,0,0,First round,Africa,FF33CC00,FFFF0A0A
+71,Canada,1,3,0,0,3,0,5,-5,0,0,First round,Central/North America,FFFF0A0A,FFFFFFFF
+72,Indonesia,1,1,0,0,1,0,6,-6,0,0,First round,Asia,FFFF0A0A,FFFFFFFF
+73,United Arab Emirates,1,3,0,0,3,2,11,-9,0,0,First round,Asia,FF33CC00,FF000000
+74,China,1,3,0,0,3,0,9,-9,0,0,First round,Asia,FFFF0A0A,FFFFFF00
+75,Haiti,1,3,0,0,3,2,14,-12,0,0,First round,Central/North America,FF0066CC,FFFF0A0A
+76,DR Congo,1,3,0,0,3,0,14,-14,0,0,First round,Africa,FFFFFF00,FFFF0A0A
+77,El Salvador,2,6,0,0,6,1,22,-21,0,0,First round,Central/North America,FF0066CC,FFFFFFFF
