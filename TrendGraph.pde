@@ -1,4 +1,5 @@
 class TrendGraph {
+  //Fields
   Team team;
   ArrayList<String> data;
   ArrayList<String>  xAxisLabels;
@@ -7,6 +8,7 @@ class TrendGraph {
   color teamColour1;
   color teamColour2;
 
+  //Constructor
 
   TrendGraph(Team t, ArrayList<String> x, ArrayList<String> y, ArrayList<Tournament> trn) {
     team=t;
@@ -18,33 +20,40 @@ class TrendGraph {
     teamColour2=team.getTeamColour2();
   }
 
+  //Draw the graph
   void drawGraph() {
     drawXAxis();
     drawYAxis();
     drawTrendLine();
   }
 
-
+  //Draw X axis
   void drawXAxis() {
+
+    //Borders
     float x1=425.0f;
     float x2=float(width-80);
     float y=float(height-40);
-
     float xInterval=(x2-x1)/float(data.size()-1);
     int tick=10;
+
+
+    //Draw line/labels
     strokeWeight(2);
     stroke(255);
     fill(255);
     line(x1, y, x2, y);
-    float x=x1;
+
     textSize(14);
     textAlign(CENTER, CENTER);
+
+    float x=x1;
     for (String s : xAxisLabels) {
       text(s, x, y+17);
       line(x, y, x, y+tick);
       x+=xInterval;
     }
-    
+
     text("Year", x, y+17);
     text("(Entrants)", x, y+31);
     x=x1;
@@ -54,13 +63,16 @@ class TrendGraph {
     }
   }
 
+  //Draw Y axis
   void drawYAxis() {
+    //Borders
     float x=425.0f;
     float y1=65.0f;
     float y2=float(height-40);
-
     float yInterval=(y2-y1)/float(yAxisLabels.size());
     int tick=10;
+
+    //Draw line/labels
     float y=y1;
     strokeWeight(2);
     stroke(255);
@@ -68,7 +80,8 @@ class TrendGraph {
     line(x, y1, x, y2);
     textSize(14);
     textAlign(CENTER, CENTER);
-    text("Position",x,y-14);
+    text("Position", x, y-14);
+
     for (String s : yAxisLabels) {
       text(s, x-20, y);
       line(x, y, x-tick, y);
@@ -82,8 +95,11 @@ class TrendGraph {
 
 
 
-
+  //Draw the trend line
   void drawTrendLine() {
+    textSize(14);
+    strokeWeight(2);
+    //Borders
     float xBorder1=425.0f;
     float xBorder2=float(width-80);
     float yBorder1=65.0f;
@@ -91,7 +107,7 @@ class TrendGraph {
     float xInterval=(xBorder2-xBorder1)/float(data.size()-1);
     float yInterval=(yBorder2-yBorder1)/float(yAxisLabels.size());
 
-
+    //loop through data to draw line
     for (int i=1; i<data.size (); i++) {
 
       float val1=33-(int(data.get(i-1)));
@@ -102,19 +118,23 @@ class TrendGraph {
       float y1=yBorder2-val1*yInterval;
       float y2=yBorder2-val2*yInterval;
 
+      //change colour when team has failed to qualify for next/previous tournament
       if (val1>0&&val2>0) {
         stroke(teamColour1);
       } else {
         stroke(teamColour2);
       }
-
+      //draw this portion of line
       line(x1, y1, x2, y2);
 
+      //Draw a dot and print finishing position at each year
       stroke(teamColour2);
       fill(teamColour1);
       ellipse(x1, y1, 13, 13);
       ellipse(x2, y2, 13, 13);
       fill(teamColour2);
+
+      //dont't print position if did not qualify
       if (val1>0) {
         text(data.get(i-1), x1+17, y1);
       }

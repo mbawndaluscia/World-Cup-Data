@@ -18,7 +18,7 @@ class Tournament {
   int borderX=400;
   int borderY=0;
 
-
+//Constructor
   Tournament(ArrayList<String> data) {
     year=data.get(0);
     host=data.get(1);
@@ -29,9 +29,11 @@ class Tournament {
     goals=parseInt(data.get(6));
     goalsPerGame=parseFloat(data.get(7));
 
+//Set image path for flag
     String imgPath="flag-of-" + host + ".png";
     setFlag(imgPath);
 
+//populate arrays for printing summary
     stringDetails=new String[] {
       data.get(2), data.get(3), data.get(4),
       data.get(5), data.get(6), data.get(7)
@@ -51,13 +53,7 @@ class Tournament {
   PImage getFlag() {
     return flag.getImage();
   }
-
-  void drawFlag(int x, int y) {
-    image(flag.getImage(), x, y);
-    flagX=x;
-    flagY=y;
-  }
-
+  
   int getFlagX() {
     int xloc=flagX;
     return xloc;
@@ -66,6 +62,15 @@ class Tournament {
     int yloc=flagY;
     return yloc;
   }
+
+//draw the flag
+  void drawFlag(int x, int y) {
+    image(flag.getImage(), x, y);
+    flagX=x;
+    flagY=y;
+  }
+
+//Print tournament header 
   void displayHeader() {
     drawFlag(borderX, borderY);
     fill(255);
@@ -74,6 +79,7 @@ class Tournament {
     text(host+" "+year, borderX+75, borderY+38);
   }
 
+//Print tournament summary
   void displayDetails() {
 
     displayHeader();
@@ -96,6 +102,7 @@ class Tournament {
     }
   }
 
+//get methods for data needed elsewhere
   String getYear() {
     return year;
   }

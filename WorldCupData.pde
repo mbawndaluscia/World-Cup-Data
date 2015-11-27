@@ -20,31 +20,41 @@ ArrayList<Button> buttons = new ArrayList<Button>();
 ArrayList<String> positionLabels = new ArrayList<String>();
 ArrayList<String> yearLabels = new ArrayList<String>();
 
+
+//Borders
 int flagPanelW=272;
 int flagW=68;
 int flagH=40;
 
+
+//Buttons
 Button nationsButton;
 Button tournamentsButton;
 
 Button summaryButton;
 Button graphButton;
+Button clearButton;
 
-
+//Button selected bools
 boolean nationsSelected=true;
 boolean tournamentSelected=false;
 boolean summarySelected=true;
 boolean graphSelected=false;
+
+boolean axisDrawn=false;
+
 Team selectedTeam;
 
 void setup() {
   size(1300, 680);
   background(200);
   stroke(0);
+
+  //Load data from csv files
   loadTeamData();
   loadTournamentData();
   loadFinalPositionsData();
-  clearDisplay();
+  //Draw the left panel
   drawLeftPanel();
   addFlags();
   addButtons();
@@ -57,7 +67,7 @@ void setup() {
 void draw() {
 
 
-
+  //Check which panel is active and draw
   if (nationsButton.isSelected()) {
     nationsSelected=true;
     tournamentSelected=false;
@@ -72,42 +82,51 @@ void draw() {
 }
 
 void mousePressed() {
+
+  //Check if any buttons clicked
   for (Button button : buttons) {
     if (mouseX>button.getX()&&mouseX<button.getX()+button.getW()&&
       mouseY>button.getY()&&mouseY<button.getY()+button.getH()) {
 
+      //Show nations
       if (button==nationsButton && !nationsButton.isSelected()) {
-        
-          nationsButton.toggleButton();
-          tournamentsButton.toggleButton();
-          clearDisplay();
-          redrawTeamButtons();
-      
+
+        nationsButton.toggleButton();
+        tournamentsButton.toggleButton();
+        clearDisplay();
+        redrawTeamButtons();
       }
+
+      //Show tournaments
       if (button==tournamentsButton && !tournamentsButton.isSelected()) {
-       
-          nationsButton.toggleButton();
-          tournamentsButton.toggleButton();
-          clearDisplay();
-        
-      }
 
+        nationsButton.toggleButton();
+        tournamentsButton.toggleButton();
+        clearButton.toggleButton();
+        clearDisplay();
+      }
+      //Show team summary
       if (button==summaryButton && ! summaryButton.isSelected()) {
-       
-          summaryButton.toggleButton();
-          graphButton.toggleButton();
-          clearDisplay();
-          selectedTeam.displayDetails();
+
+        summaryButton.toggleButton();
+        graphButton.toggleButton();
+        clearButton.toggleButton();
+        clearDisplay();
+        selectedTeam.displayDetails();
+      }
+      //Show team graph
+      if (button==graphButton && ! graphButton.isSelected()) {
         
+        graphButton.toggleButton();
+        summaryButton.toggleButton();
+        clearButton.toggleButton();
+        clearDisplay();
+        selectedTeam.drawTrendGraph(positionLabels, yearLabels, tournaments);
+        axisDrawn=true;
       }
 
-      if (button==graphButton && ! graphButton.isSelected()) {
-       
-          graphButton.toggleButton();
-          summaryButton.toggleButton();
-          clearDisplay();
-          selectedTeam.drawTrendGraph(positionLabels,yearLabels,tournaments);
-        
+      if (button==clearButton) {
+        clearDisplay();
       }
     }
   }
@@ -115,7 +134,7 @@ void mousePressed() {
 
 
 
-
+  //Check if flag clicked and display team
   if (nationsButton.isSelected()) {
 
     for (Team team : teams) {
@@ -127,15 +146,20 @@ void mousePressed() {
           team.displayDetails();
           selectedTeam=team;
         } else {
-          clearDisplay();
-          team.drawTrendGraph(positionLabels, yearLabels,tournaments);
+          if (!axisDrawn) {
+            axisDrawn=false;
+            team.drawTrendGraph(positionLabels, yearLabels, tournaments);
+            axisDrawn=true;
+          } else {
+            team.drawTrendLine(positionLabels, yearLabels, tournaments);
+          }
           selectedTeam=team;
         }
       }
     }
     redrawTeamButtons();
   }
-
+  //Check if tournament clicked and show
   if (tournamentsButton.isSelected()) {
 
     for (Tournament tournament : tournaments) {
@@ -150,7 +174,7 @@ void mousePressed() {
 
 
 
-
+//Add buttons
 void addButtons() {
   noStroke();
 
@@ -163,8 +187,12 @@ void addButtons() {
     new Button( 0, 640, flagW*5+flagH, flagH, false, "Tournaments");
   buttons.add(tournamentsButton);
 
+  clearButton=
+    new Button(width-420, 0, 100, flagH, false, "Clear");
+  buttons.add(clearButton);
+
   summaryButton=
-    new Button(width-300, 0, 150, flagH, true, "Summary");
+    new Button(width-320, 0, 170, flagH, true, "Summary");
   buttons.add(summaryButton);
 
 
@@ -178,33 +206,33 @@ void addButtons() {
 
 
 
-
+//Redraw mode buttons
 void redrawModeButtons() {
   nationsButton.drawButton();
   tournamentsButton.drawButton();
 }
 
+
+//redraw team buttons
 void redrawTeamButtons() {
   summaryButton.drawButton();
   graphButton.drawButton();
+  clearButton.drawButton();
 }
 
+//draw the left panel
 void drawLeftPanel() {
   fill(255, 215, 0);
   noStroke();
   rect(0, 0, flagPanelW+flagW+flagH, height);
 }
 
-
+//Draw Flags
 void addFlags() {
   int row=0;
   int col=0;
 
   drawLeftPanel();
-
-
-
-  //Draw Flags
   for (Team t : teams) {
     t.drawFlag(col, row);
     if (col<flagPanelW) {
@@ -229,7 +257,7 @@ void addFlags() {
   line(flagPanelW+flagW, 0, flagPanelW+flagW, height-flagH*2);
 }
 
-
+//Draw tournament labels
 void addTournamentLabels() {
   fill(0, 191, 255);
   noStroke();
@@ -262,6 +290,8 @@ void addTournamentLabels() {
   rect(flagPanelW+flagW, height-flagH, flagH, flagH);
 }
 
+
+//Populate arraylists of labels for graphs
 void addLabels() {
   for (int i=1; i<=32; i+=1) {
     positionLabels.add(String.valueOf(i));
@@ -275,19 +305,20 @@ void addLabels() {
 
 
 
-
+//Clear the display panel
 void clearDisplay() {
   int displayX1=381; 
   int displayX2=width-displayX1; 
   stroke(0); 
   fill(65); 
   rect(displayX1, 0, displayX2, height);
+  axisDrawn=false;
 }
 
 
 
 
-
+//Load team data from csv
 void loadTeamData()
 {
   //Load team data to a string arrray
@@ -315,6 +346,7 @@ void loadTeamData()
   }
 }
 
+//Load positions data from csv
 void loadFinalPositionsData()
 {
   //Load final position data to a string arrray
@@ -334,12 +366,13 @@ void loadFinalPositionsData()
     }
     finalPositions.add(lineData);
   }
-
+  //set positions foreach team
   for (int i =0; i < teams.size (); i++) {
     teams.get(i).setPositions(finalPositions.get(i));
   }
 }
 
+//load tournament data from csv
 void loadTournamentData()
 {
   //Load team data to a string arrray

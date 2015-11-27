@@ -11,8 +11,7 @@ class Button {
   int tSize;
   
   
-  Button() {
-  }
+ //Constructor
   Button( int x, int y,int w, int h, boolean s,String lab) {
     bW=w;
     bH=h;
@@ -25,12 +24,13 @@ class Button {
     tSize=32;
     
   } 
-
+//toggle button selected value
   void toggleButton() {
     selected=!selected;
     drawButton();
   }
 
+//Draw the button
   void drawButton() {
     if (selected) {
       fill(colourActive);
@@ -48,7 +48,7 @@ class Button {
     }
     text(label, bX+bW/2, bY+bH);
   }
-  
+//get button location / dimensions  
   int getX(){
     return bX;
   }
@@ -61,7 +61,7 @@ class Button {
    int getH(){
     return bH;
   }
-  
+ //get button selected value 
   boolean isSelected(){
    return selected; 
   }

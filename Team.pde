@@ -25,6 +25,7 @@ class Team {
   int borderX=400;
   int borderY=0;
 
+//Constructor
   Team(ArrayList<String> data) {
     rank=parseInt(data.get(0));
     teamName=data.get(1);
@@ -47,7 +48,7 @@ class Team {
     setFlag(imgPath);
 
 
-
+//populate arrays for printing summary
     stringDetails=new String[] {
       data.get(13), data.get(0), data.get(2), data.get(3), 
       data.get(4), data.get(5), data.get(6), data.get(7), 
@@ -78,6 +79,7 @@ class Team {
     flagY=y;
   }
 
+//Populate team final positions arraylist
   void setPositions(ArrayList<String> pos) {
     positions=pos;
   }
@@ -152,6 +154,8 @@ class Team {
     return positions;
   }
 
+
+//Print team header
   void displayHeader() {
     drawFlag(borderX, borderY);
     fill(teamColour1);
@@ -160,6 +164,7 @@ class Team {
     text(teamName, borderX+75, borderY+38);
   }
 
+//Print team summary
   void displayDetails() {
     displayHeader();
     textSize(28);
@@ -174,12 +179,22 @@ class Team {
       y+=48;
     }
   }
-
+//draw full trend graph 
   void drawTrendGraph(ArrayList<String> positionLabels, ArrayList<String> yearLabels,ArrayList<Tournament> trn) {
-    clearDisplay();
     displayHeader();
     TrendGraph tg=new TrendGraph(this, yearLabels, positionLabels,trn);
     tg.drawGraph();
   }
+  
+ //draw trend line only
+ void drawTrendLine(ArrayList<String> positionLabels, ArrayList<String> yearLabels,ArrayList<Tournament> trn){
+    TrendGraph tg=new TrendGraph(this, yearLabels, positionLabels,trn);
+    tg.drawTrendLine();
+ }
+ 
+ void printGraphInstructions(){
+   textSize(12);
+   text("Click more flags to compare teams",
+ }
 }
 
