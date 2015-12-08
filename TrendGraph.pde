@@ -54,11 +54,11 @@ class TrendGraph {
       x+=xInterval;
     }
 
-    text("Year", x, y+17);
-    text("(Entrants)", x, y+31);
+    text("Year", x+5, y+17);
+    text("(Entrants)", x+5, y+31);
     x=x1;
     for (Tournament trn : tournaments) {
-      text("("+trn.getEntrants()+")", x+3, y+31); 
+      text("("+trn.getEntrants()+")", x, y+31); 
       x+=xInterval;
     }
   }
@@ -98,6 +98,7 @@ class TrendGraph {
   //Draw the trend line
   void drawTrendLine() {
     textSize(14);
+    textAlign(CENTER,CENTER);
     strokeWeight(2);
     //Borders
     float xBorder1=425.0f;
@@ -118,14 +119,11 @@ class TrendGraph {
       float y1=yBorder2-val1*yInterval;
       float y2=yBorder2-val2*yInterval;
 
-      //change colour when team has failed to qualify for next/previous tournament
+    //draw this portion of line(don't draw if team didn't qualify one of these years)
+      stroke(teamColour1);
       if (val1>0&&val2>0) {
-        stroke(teamColour1);
-      } else {
-        stroke(teamColour2);
+       line(x1, y1, x2, y2);
       }
-      //draw this portion of line
-      line(x1, y1, x2, y2);
 
       //Draw a dot and print finishing position at each year
       stroke(teamColour2);
@@ -134,13 +132,15 @@ class TrendGraph {
       ellipse(x2, y2, 13, 13);
       fill(teamColour2);
 
-      //dont't print position if did not qualify
+      //dont't print position if team did not qualify
       if (val1>0) {
         text(data.get(i-1), x1+17, y1);
       }
       if (val2>0) {
         text(data.get(i), x2+17, y2);
       }
+      
+     
     }
   }
 }

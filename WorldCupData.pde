@@ -1,4 +1,4 @@
-//Arraylist of team objects
+//Arraylist of teams
 ArrayList<Team> teams = new ArrayList<Team>(); 
 
 //2d Arraylist of team data
@@ -7,19 +7,20 @@ ArrayList<ArrayList<String>> teamData = new ArrayList<ArrayList<String>>();
 //2d Arraylist of team final position data
 ArrayList<ArrayList<String>> finalPositions = new ArrayList<ArrayList<String>>();
 
-//Arraylist of tournament objects
+//Arraylist of tournaments
 ArrayList<Tournament> tournaments = new ArrayList<Tournament>(); 
 
 //2d arraylist of tournament data
 ArrayList<ArrayList<String>> tournamentData = new ArrayList<ArrayList<String>>();
 
-//Arraylist of button objects
+//Arraylist of buttons
 ArrayList<Button> buttons = new ArrayList<Button>(); 
 
 //ArrayLists of labels for graphs
 ArrayList<String> positionLabels = new ArrayList<String>();
 ArrayList<String> yearLabels = new ArrayList<String>();
 
+PFont font;
 
 //Borders
 int flagPanelW=272;
@@ -30,30 +31,36 @@ int flagH=40;
 //Buttons
 Button nationsButton;
 Button tournamentsButton;
+Button mapButton;
 
 Button summaryButton;
 Button graphButton;
 Button clearButton;
 
-//Button selected bools
-boolean nationsSelected=true;
-boolean tournamentSelected=false;
-boolean summarySelected=true;
-boolean graphSelected=false;
+Button goalsButton;
+
+Button appearancesButton;
 
 boolean axisDrawn=false;
 
 Team selectedTeam;
 
+
+
 void setup() {
   size(1300, 680);
-  background(200);
+  background(65);
   stroke(0);
+
+  //Font
+  font=createFont("Meiryo-Bold.vlw", 28);
+  textFont(font);
 
   //Load data from csv files
   loadTeamData();
   loadTournamentData();
   loadFinalPositionsData();
+
   //Draw the left panel
   drawLeftPanel();
   addFlags();
@@ -63,21 +70,13 @@ void setup() {
   selectedTeam=teams.get(0);
 
   addLabels();
+  fill(255);
+  textSize(40);
+  textAlign(CENTER);
+  text("Football World Cup Stats", width/2, flagH);
+  showInstructions();
 }
 void draw() {
-
-
-  //Check which panel is active and draw
-  if (nationsButton.isSelected()) {
-    nationsSelected=true;
-    tournamentSelected=false;
-    addFlags();
-  } else {
-    nationsSelected=false;
-    tournamentSelected=true;
-    addTournamentLabels();
-  }
-
   redrawModeButtons();
 }
 
@@ -91,46 +90,81 @@ void mousePressed() {
       //Show nations
       if (button==nationsButton && !nationsButton.isSelected()) {
 
-        nationsButton.toggleButton();
-        tournamentsButton.toggleButton();
+        nationsButton.buttonOn();
+        tournamentsButton.buttonOff();
+        mapButton.buttonOff();
         clearDisplay();
         redrawTeamButtons();
+        addFlags();
+        showInstructions();
+      }
+
+      if (nationsButton.isSelected()) {
+        //Show team summary
+        if (button==summaryButton && ! summaryButton.isSelected()) {
+
+          summaryButton.toggleButton();
+          graphButton.toggleButton();
+          clearButton.toggleButton();
+          clearDisplay();
+          selectedTeam.displayDetails();
+        }
+        //Show team graph
+        if (button==graphButton && ! graphButton.isSelected()) {
+
+          graphButton.toggleButton();
+          summaryButton.toggleButton();
+          clearButton.toggleButton();
+          clearDisplay();
+          selectedTeam.drawTrendGraph(positionLabels, yearLabels, tournaments);
+          selectedTeam.printGraphInstructions();
+          axisDrawn=true;
+        }
+        //Clear the right panel
+        if (button==clearButton) {
+          clearDisplay();
+        }
+      }
+      //Show maps
+      if (button==mapButton && !mapButton.isSelected()) {
+        mapButton.buttonOn();
+        nationsButton.buttonOff();
+        tournamentsButton.buttonOff();
+        // redrawModeButtons();
+        clearDisplay();
+        showMap();
+        redrawMapButtons();
+        drawAppearances();
+        showInstructions();
+      }
+      if (button==goalsButton && !goalsButton.isSelected()) {
+        goalsButton.buttonOn();
+        appearancesButton.buttonOff();
+        showMap();
+        drawGoals();
+        redrawMapButtons();
+      }
+
+      if (button==appearancesButton && !appearancesButton.isSelected()) {
+        goalsButton.buttonOff();
+        appearancesButton.buttonOn();
+        showMap();
+        drawAppearances();
+        redrawMapButtons();
       }
 
       //Show tournaments
       if (button==tournamentsButton && !tournamentsButton.isSelected()) {
-
-        nationsButton.toggleButton();
-        tournamentsButton.toggleButton();
-        clearButton.toggleButton();
+        mapButton.buttonOff();
+        nationsButton.buttonOff();
+        tournamentsButton.buttonOn();
+        redrawModeButtons();
         clearDisplay();
-      }
-      //Show team summary
-      if (button==summaryButton && ! summaryButton.isSelected()) {
-
-        summaryButton.toggleButton();
-        graphButton.toggleButton();
-        clearButton.toggleButton();
-        clearDisplay();
-        selectedTeam.displayDetails();
-      }
-      //Show team graph
-      if (button==graphButton && ! graphButton.isSelected()) {
-        
-        graphButton.toggleButton();
-        summaryButton.toggleButton();
-        clearButton.toggleButton();
-        clearDisplay();
-        selectedTeam.drawTrendGraph(positionLabels, yearLabels, tournaments);
-        axisDrawn=true;
-      }
-
-      if (button==clearButton) {
-        clearDisplay();
+        addTournamentLabels();
+        showInstructions();
       }
     }
   }
-
 
 
 
@@ -150,8 +184,10 @@ void mousePressed() {
             axisDrawn=false;
             team.drawTrendGraph(positionLabels, yearLabels, tournaments);
             axisDrawn=true;
+            team.displayHeader();
           } else {
             team.drawTrendLine(positionLabels, yearLabels, tournaments);
+            team.displayHeader();
           }
           selectedTeam=team;
         }
@@ -167,10 +203,41 @@ void mousePressed() {
         mouseY>tournament.getFlagY()&&mouseY<tournament.getFlagY()+flagH) {
         clearDisplay();
         tournament.displayDetails();
+        tournament.displayTeamPositions(teams);
+      }
+    }
+  }
+//Check if map selected
+  if (mapButton.isSelected()) {
+
+    showMap();
+    showInstructions();
+    if (goalsButton.isSelected()) {
+      drawGoals();
+    }
+    if (appearancesButton.isSelected()) {
+      drawAppearances();
+    }
+    redrawMapButtons();
+
+    for (Team team : teams) {
+      if (mouseX>team.getMapX()-3 && mouseX<team.getMapX()+3 &&
+        mouseY>team.getMapY()-3 && mouseY<team.getMapY()+3) {
+        fill(0);
+        textSize(26);
+        String num;
+        if (goalsButton.isSelected()) {
+          num="("+team.getGoalsFor()+")";
+        } else {
+          num="("+team.getApps()+")";
+        }
+        text(team.getTeamName() +num, mouseX, mouseY);
       }
     }
   }
 }
+
+
 
 
 
@@ -184,21 +251,35 @@ void addButtons() {
 
 
   tournamentsButton=
-    new Button( 0, 640, flagW*5+flagH, flagH, false, "Tournaments");
+    new Button( flagW+flagH, 640, flagW*4-flagH, flagH, false, "Tournaments");
   buttons.add(tournamentsButton);
+
+  mapButton=
+    new Button( 0, height-flagH, flagW+flagH-2, flagH, false, "Map");
+  buttons.add(mapButton);
 
   clearButton=
     new Button(width-420, 0, 100, flagH, false, "Clear");
   buttons.add(clearButton);
 
   summaryButton=
-    new Button(width-320, 0, 170, flagH, true, "Summary");
+    new Button(width-319, 0, 170, flagH, true, "Summary");
   buttons.add(summaryButton);
 
 
   graphButton=
-    new Button( width-150, 0, 150, flagH, false, "Graph");
+    new Button( width-148, 0, 150, flagH, false, "Graph");
   buttons.add(graphButton);
+
+
+
+  appearancesButton=
+    new Button(width-339, height-flagH, 190, flagH, true, "Appearances");
+  buttons.add(appearancesButton);
+
+  goalsButton=
+    new Button( width-148, height-flagH, 150, flagH, false, "Goals");
+  buttons.add(goalsButton);
 }
 
 
@@ -210,17 +291,24 @@ void addButtons() {
 void redrawModeButtons() {
   nationsButton.drawButton();
   tournamentsButton.drawButton();
+  mapButton.drawButton();
 }
 
 
-//redraw team buttons
+//Redraw team buttons
 void redrawTeamButtons() {
   summaryButton.drawButton();
   graphButton.drawButton();
   clearButton.drawButton();
 }
 
-//draw the left panel
+//Redraw map buttons
+void redrawMapButtons() {
+  goalsButton.drawButton();
+  appearancesButton.drawButton();
+}
+
+//Draw the left panel
 void drawLeftPanel() {
   fill(255, 215, 0);
   noStroke();
@@ -262,8 +350,10 @@ void addTournamentLabels() {
   fill(0, 191, 255);
   noStroke();
   rect(0, 0, flagPanelW+flagW, height);
+
   rect(0, height-flagH*2+1, flagW*2+1, flagH);
   fill(255, 215, 0);
+  rect(flagPanelW+flagW, 0, flagH, height-flagH*2);
   rect(flagW*5, height-flagH*2+1, flagH, flagH);
   int row=10;
   int col=10;
@@ -303,7 +393,54 @@ void addLabels() {
   }
 }
 
+void showMap() {
+  clearDisplay();
+  PImage img=loadImage("worldMap.png");
+  image(img, 0, 0);
+}
 
+
+
+void drawGoals() {
+  noFill();
+  strokeWeight(2);
+  for (Team team : teams) {
+
+    int x=5;
+    for (int goals=0; goals<team.getGoalsFor (); goals+=10) {
+      stroke(team.getTeamColour1()); 
+      ellipse(team.getMapX(), team.getMapY(), x, x);
+      stroke(team.getTeamColour2()); 
+      ellipse(team.getMapX(), team.getMapY(), x+1, x+1);
+      x+=5;
+    }
+  }
+  for (Team team : teams) {
+    fill(team.getTeamColour1());
+    stroke(team.getTeamColour2());
+    ellipse(team.getMapX(), team.getMapY(), 5, 5);
+  }
+}
+void drawAppearances() {
+  noFill();
+  strokeWeight(2);
+  for (Team team : teams) {
+
+    int x=5;
+    for (int apps=1; apps<=team.getApps (); apps+=1) {
+      stroke(team.getTeamColour1()); 
+      ellipse(team.getMapX(), team.getMapY(), x, x);
+      stroke(team.getTeamColour2()); 
+      ellipse(team.getMapX(), team.getMapY(), x+1, x+1);
+      x+=5;
+    }
+  }
+  for (Team team : teams) {
+    fill(team.getTeamColour1());
+    stroke(team.getTeamColour2());
+    ellipse(team.getMapX(), team.getMapY(), 5, 5);
+  }
+}
 
 //Clear the display panel
 void clearDisplay() {
@@ -313,6 +450,20 @@ void clearDisplay() {
   fill(65); 
   rect(displayX1, 0, displayX2, height);
   axisDrawn=false;
+  
+}
+//Display instructions
+void showInstructions() {
+  fill(255);
+  textSize(26);
+  textAlign(CENTER);
+  if (nationsButton.isSelected()) {
+    text("Click a flag to view stats for a country", width/2, 100);
+  } else if (tournamentsButton.isSelected() ){
+    text("Click a year to view stats for a tournament", width/2, 100);
+  } else if(mapButton.isSelected()) {
+    text("Select appearances or goals to view on map", width/2, height-30);
+  }
 }
 
 
@@ -366,7 +517,7 @@ void loadFinalPositionsData()
     }
     finalPositions.add(lineData);
   }
-  //set positions foreach team
+  //set positions for each team
   for (int i =0; i < teams.size (); i++) {
     teams.get(i).setPositions(finalPositions.get(i));
   }
@@ -393,10 +544,12 @@ void loadTournamentData()
   }
 
   //Add team objects to arraylist
+  int index=0;
   for (ArrayList<String> s : tournamentData)
   {
-    Tournament tournament=new Tournament(s); 
+    Tournament tournament=new Tournament(s, index); 
     tournaments.add(tournament);
+    index++;
   }
 }
 
