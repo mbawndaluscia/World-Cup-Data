@@ -4,6 +4,4 @@ Visualisation of historical data from the football world cup. Uses 3 csv files c
 
 Clicking on nations flags shows trend graph of final position in each world cup and summary of team stats.
 
-TO DO:
-
-Add additional graphs/charts(tbc) for countries, same for each tournament. 
+Map of the world displays visualisation of number of appearances/goals for each nation.
